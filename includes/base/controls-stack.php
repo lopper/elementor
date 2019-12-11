@@ -1020,6 +1020,10 @@ abstract class Controls_Stack extends Base_Object {
 	 */
 	public function get_data( $item = null ) {
 		if ( ! $this->settings_sanitized && ( ! $item || 'settings' === $item ) ) {
+			if(is_null($this->data['settings'])) {
+				$this->data['settings'] = [];
+			}
+			
 			$this->data['settings'] = $this->sanitize_settings( $this->data['settings'] );
 
 			$this->settings_sanitized = true;
